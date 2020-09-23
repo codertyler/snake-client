@@ -1,15 +1,30 @@
+const { Server } = require('http');
+const net = require('net');
+
 const connect = function() {
   const conn = net.createConnection({ 
-    host: "10.2",
+    host: "localhost",
     port: 50541
-  },);
+  }, 
+
+  );
   // interpret incoming data as text
   conn.setEncoding('utf8'); 
 
-  //Error handler
-  conn.on('error', (error) => {
-    console.log("you ded cuz you idled");
+  //Messaging that connection is successful
+  conn.on('connect', () => {
+    console.log("Connection Successful!");
+    conn.write("Name: TYL");
   })
+
+  //Error handler
+  conn.on('data', (data) => {
+    console.log(data);
+  })
+
+ 
 
   return conn;
 }
+
+module.exports = connect;
