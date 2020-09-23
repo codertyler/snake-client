@@ -15,8 +15,9 @@ const connect = function() {
   conn.on('connect', () => {
     console.log("Connection Successful!");
     conn.write("Name: TYL");
-    // conn.write("Move: up");
-
+    conn.write("Move: up");
+    conn.write("Move: up");
+        conn.write("Move: up");
 
 
   })
